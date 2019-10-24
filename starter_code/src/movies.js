@@ -46,17 +46,47 @@ return orderedArray;
 // Iteration 4: Steven Spielberg. The best? - How many movies did STEVEN SPIELBERG direct
 
 function countSpielbergDramaMovies (array) { 
-    const stevenArray = array.filter((value) => {
-        return value.genre.director("Steven Spielberg")
-    }) 
-  return stevenArray; 
-}; 
-
-
+    const stevenSArray = array.filter((value) => {
+        if(value.director === 'Steven Spielberg' && value.genre.includes("Drama")) { 
+        return true;
+        } else {
+        return false; 
+        }
+        }); 
+        return stevenSArray.length;
+    } 
 
 // Iteration 5: Alphabetic Order - Order by title and print the first 20 titles
 
+function orderAlphabetically (array) { 
+
+array.sort((a, b) => {
+    if(a.title > b.title) { 
+        return 1;
+        } else if (a.title < b.title) { 
+        return -1;
+        } else {
+        return 0;
+        } 
+}); 
+    const titles = array.map((value) => { 
+        return value.title
+    }); 
+    const topTwenty = titles.slice(0, 20); 
+    return topTwenty; 
+}
+      
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
 
-// BONUS Iteration: Best yearly rate average - Best yearly rate average 
+function turnHoursToMinutes(array){
+    let transformMins = array.map((value) => {
+    return value.duration.split(" ")
+      })
+    console.log(transformMins); 
+};
 
+turnHoursToMinutes(MOVIES)
+
+
+
+// BONUS Iteration: Best yearly rate average - Best yearly rate average
