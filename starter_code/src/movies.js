@@ -79,14 +79,22 @@ array.sort((a, b) => {
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
 
 function turnHoursToMinutes(array){
-    let transformMins = array.map((value) => {
-    return value.duration.split(" ")
-      })
-    console.log(transformMins); 
-};
+  return array.map((value) => { 
+    const duration = value.duration.split(' ');
+    let minutes = 0;
+    for (let time of duration) { 
+        if(time.includes('h')) { 
+            minutes += parseInt(time) *60;
+        } else { 
+            minutes += parseInt(time); 
+        }
+    }
+    return { 
+        ...value,
+        duration: minutes
+    }; 
+  }); 
+}
 
-turnHoursToMinutes(MOVIES)
 
-
-
-// BONUS Iteration: Best yearly rate average - Best yearly rate average
+// } 
